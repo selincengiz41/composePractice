@@ -37,11 +37,12 @@ fun SearchBar(
     readOnly: Boolean,
     onClick: (() -> Unit)? = null,
     onValueChange: (String) -> Unit,
-    onSearch: () -> Unit
+    onSearch: () -> Unit,
 ) {
-    val interactionSource = remember {
-        MutableInteractionSource()
-    }
+    val interactionSource =
+        remember {
+            MutableInteractionSource()
+        }
 
     val isClicked = interactionSource.collectIsPressedAsState().value
     LaunchedEffect(key1 = isClicked) {
@@ -52,9 +53,10 @@ fun SearchBar(
 
     Box(modifier = modifier) {
         TextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .searchBarBorder(),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .searchBarBorder(),
             value = text,
             onValueChange = onValueChange,
             readOnly = readOnly,
@@ -63,56 +65,57 @@ fun SearchBar(
                     painter = painterResource(id = R.drawable.ic_search),
                     contentDescription = null,
                     modifier = Modifier.size(IconSize),
-                    tint = colorResource(id = R.color.body)
+                    tint = colorResource(id = R.color.body),
                 )
             },
             placeholder = {
                 Text(
                     text = "Search",
                     style = MaterialTheme.typography.bodySmall,
-                    color = colorResource(
-                        id = R.color.placeholder
-                    )
+                    color =
+                        colorResource(
+                            id = R.color.placeholder,
+                        ),
                 )
             },
             shape = MaterialTheme.shapes.medium,
-            colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = colorResource(id = R.color.input_background),
-                focusedContainerColor = colorResource(id = R.color.input_background),
-                cursorColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
-                focusedTextColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
-                disabledIndicatorColor = Color.Transparent,
-                errorIndicatorColor = Color.Transparent,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
+            colors =
+                TextFieldDefaults.colors(
+                    unfocusedContainerColor = colorResource(id = R.color.input_background),
+                    focusedContainerColor = colorResource(id = R.color.input_background),
+                    cursorColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
+                    focusedTextColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
+                    disabledIndicatorColor = Color.Transparent,
+                    errorIndicatorColor = Color.Transparent,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-            keyboardActions = KeyboardActions(
-                onSearch = {
-                    onSearch()
-                }
-            ),
+            keyboardActions =
+                KeyboardActions(
+                    onSearch = {
+                        onSearch()
+                    },
+                ),
             textStyle = MaterialTheme.typography.bodySmall,
             interactionSource = interactionSource,
-
-            )
-
-    }
-
-}
-
-fun Modifier.searchBarBorder(): Modifier = composed {
-    if (!isSystemInDarkTheme()) {
-        border(
-            width = 1.dp,
-            color = Color.Black,
-            shape = MaterialTheme.shapes.medium
         )
-    } else {
-        this
     }
 }
+
+fun Modifier.searchBarBorder(): Modifier =
+    composed {
+        if (!isSystemInDarkTheme()) {
+            border(
+                width = 1.dp,
+                color = Color.Black,
+                shape = MaterialTheme.shapes.medium,
+            )
+        } else {
+            this
+        }
+    }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(showBackground = true)
@@ -120,7 +123,6 @@ fun Modifier.searchBarBorder(): Modifier = composed {
 private fun SearchBarPreview() {
     ComposePracticeTheme {
         SearchBar(text = "", readOnly = false, onValueChange = {}) {
-
         }
     }
 }

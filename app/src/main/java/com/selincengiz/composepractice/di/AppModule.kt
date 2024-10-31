@@ -27,76 +27,71 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     @Provides
     @Singleton
     fun provideLocalUserManager(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): LocalUserManager = LocalUserManagerImpl(context)
 
     @Provides
     @Singleton
-    fun provideApiInstance(): NewsApi = Retrofit
-        .Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(NewsApi::class.java)
-
+    fun provideApiInstance(): NewsApi =
+        Retrofit
+            .Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(NewsApi::class.java)
 
     @Provides
     @Singleton
     fun provideNewsRepository(
         newsApi: NewsApi,
-        newsDao: NewsDao
+        newsDao: NewsDao,
     ): NewsRepository = NewsRepositoryImpl(newsApi, newsDao)
 
+    @Provides
+    @Singleton
+    fun provideAppEntryUseCase(localUserManager: LocalUserManager) =
+        AppEntryUseCase(
+            readAppEntry = ReadAppEntry(localUserManager),
+            saveAppEntry = SaveAppEntry(localUserManager),
+        )
 
     @Provides
     @Singleton
-    fun provideAppEntryUseCase(
-        localUserManager: LocalUserManager
-    ) = AppEntryUseCase(
-        readAppEntry = ReadAppEntry(localUserManager),
-        saveAppEntry = SaveAppEntry(localUserManager)
-    )
-
-    @Provides
-    @Singleton
-    fun provideNewsUseCase(
-        newsRepository: NewsRepository
-    ) = NewsUseCase(
-        getNews = GetNews(newsRepository),
-        searchNews = SearchNews(newsRepository),
-        deleteArticle = DeleteArticle(newsRepository),
-        upsertArticle = UpsertArticle(newsRepository),
-        selectArticles = SelectArticles(newsRepository),
-        selectArticle = SelectArticle(newsRepository)
-    )
+    fun provideNewsUseCase(newsRepository: NewsRepository) =
+        NewsUseCase(
+            getNews = GetNews(newsRepository),
+            searchNews = SearchNews(newsRepository),
+            deleteArticle = DeleteArticle(newsRepository),
+            upsertArticle = UpsertArticle(newsRepository),
+            selectArticles = SelectArticles(newsRepository),
+            selectArticle = SelectArticle(newsRepository),
+        )
 
     @Provides
     @Singleton
     fun provideNewsDatabase(
-        @ApplicationContext context: Context
-    ): NewsDatabase = Room.databaseBuilder(
-        context = context,
-        klass = NewsDatabase::class.java,
-        name = NEWS_DATABASE
-    )
-        .addTypeConverter(NewsTypeConvertor())
-        .fallbackToDestructiveMigration()
-        .build()
+        @ApplicationContext context: Context,
+    ): NewsDatabase =
+        Room
+            .databaseBuilder(
+                context = context,
+                klass = NewsDatabase::class.java,
+                name = NEWS_DATABASE,
+            ).addTypeConverter(NewsTypeConvertor())
+            .fallbackToDestructiveMigration()
+            .build()
 
     @Provides
     @Singleton
-    fun provideNewsDao(
-        newsDatabase: NewsDatabase
-    ): NewsDao = newsDatabase.newsDao
+    fun provideNewsDao(newsDatabase: NewsDatabase): NewsDao = newsDatabase.newsDao
 }

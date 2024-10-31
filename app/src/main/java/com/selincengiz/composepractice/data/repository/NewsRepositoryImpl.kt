@@ -10,37 +10,36 @@ import com.selincengiz.composepractice.data.remote.SearchNewsPagingSource
 import com.selincengiz.composepractice.domain.model.Article
 import com.selincengiz.composepractice.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.onEach
 
 class NewsRepositoryImpl(
     private val newsApi: NewsApi,
-    private val newsDao: NewsDao
+    private val newsDao: NewsDao,
 ) : NewsRepository {
-
-    override fun getNews(sources: List<String>): Flow<PagingData<Article>> {
-        return Pager(
+    override fun getNews(sources: List<String>): Flow<PagingData<Article>> =
+        Pager(
             config = PagingConfig(pageSize = 10),
             pagingSourceFactory = {
                 NewsPagingSource(
                     newsApi = newsApi,
-                    sources = sources.joinToString(separator = ",")
+                    sources = sources.joinToString(separator = ","),
                 )
-            }
+            },
         ).flow
-    }
 
-    override fun searchNews(searchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
-        return Pager(
+    override fun searchNews(
+        searchQuery: String,
+        sources: List<String>,
+    ): Flow<PagingData<Article>> =
+        Pager(
             config = PagingConfig(pageSize = 10),
             pagingSourceFactory = {
                 SearchNewsPagingSource(
                     newsApi = newsApi,
                     sources = sources.joinToString(separator = ","),
-                    searchQuery = searchQuery
+                    searchQuery = searchQuery,
                 )
-            }
+            },
         ).flow
-    }
 
     override suspend fun upsertArticle(article: Article) {
         newsDao.upsert(article)
@@ -50,11 +49,7 @@ class NewsRepositoryImpl(
         newsDao.delete(article)
     }
 
-    override fun getArticles(): Flow<List<Article>> {
-        return newsDao.getArticles()
-    }
+    override fun getArticles(): Flow<List<Article>> = newsDao.getArticles()
 
-    override suspend fun getArticle(url: String): Article? {
-        return newsDao.getArticle(url)
-    }
+    override suspend fun getArticle(url: String): Article? = newsDao.getArticle(url)
 }

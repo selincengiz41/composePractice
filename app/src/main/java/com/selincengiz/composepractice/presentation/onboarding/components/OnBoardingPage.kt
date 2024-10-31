@@ -1,7 +1,5 @@
 package com.selincengiz.composepractice.presentation.onboarding.components
 
-import android.content.res.Configuration
-import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -29,29 +27,30 @@ import com.selincengiz.composepractice.ui.theme.ComposePracticeTheme
 @Composable
 fun OnBoardingPage(
     modifier: Modifier = Modifier,
-    page: Page
+    page: Page,
 ) {
     Column(modifier = modifier) {
         Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(fraction = 0.6f),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(fraction = 0.6f),
             painter = painterResource(id = page.image),
             contentDescription = null,
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
         Spacer(modifier = Modifier.height(MediumPadding1))
         Text(
             text = page.title,
             modifier = Modifier.padding(horizontal = MediumPadding2),
             style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
-            color = colorResource(id = R.color.display_small)
+            color = colorResource(id = R.color.display_small),
         )
         Text(
             text = page.description,
             modifier = Modifier.padding(horizontal = MediumPadding2),
             style = MaterialTheme.typography.bodyMedium,
-            color = colorResource(id = R.color.text_medium)
+            color = colorResource(id = R.color.text_medium),
         )
     }
 }

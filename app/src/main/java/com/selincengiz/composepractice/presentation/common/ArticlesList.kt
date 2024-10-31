@@ -18,7 +18,7 @@ import com.selincengiz.composepractice.presentation.Dimens.MediumPadding1
 fun ArticlesList(
     modifier: Modifier = Modifier,
     articles: List<Article>,
-    onClick: (Article) -> Unit
+    onClick: (Article) -> Unit,
 ) {
     if (articles.isEmpty()) {
         EmptyScreen()
@@ -26,7 +26,7 @@ fun ArticlesList(
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(MediumPadding1),
-        contentPadding = PaddingValues(all = ExtraSmallPadding2)
+        contentPadding = PaddingValues(all = ExtraSmallPadding2),
     ) {
         items(count = articles.size) {
             ArticleCard(article = articles[it], onClick = { onClick(articles[it]) })
@@ -38,14 +38,14 @@ fun ArticlesList(
 fun ArticlesList(
     modifier: Modifier = Modifier,
     articles: LazyPagingItems<Article>,
-    onClick: (Article) -> Unit
+    onClick: (Article) -> Unit,
 ) {
     val handlePagingResult = handlePagingResult(articles = articles)
     if (handlePagingResult) {
         LazyColumn(
             modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(MediumPadding1),
-            contentPadding = PaddingValues(all = ExtraSmallPadding2)
+            contentPadding = PaddingValues(all = ExtraSmallPadding2),
         ) {
             items(count = articles.itemCount) {
                 articles[it]?.let { article ->
@@ -57,16 +57,15 @@ fun ArticlesList(
 }
 
 @Composable
-fun handlePagingResult(
-    articles: LazyPagingItems<Article>
-): Boolean {
+fun handlePagingResult(articles: LazyPagingItems<Article>): Boolean {
     val loadState = articles.loadState
-    val error = when {
-        loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
-        loadState.append is LoadState.Error -> loadState.append as LoadState.Error
-        loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
-        else -> null
-    }
+    val error =
+        when {
+            loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+            loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+            loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+            else -> null
+        }
 
     return when {
         loadState.refresh is LoadState.Loading -> {

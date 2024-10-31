@@ -23,20 +23,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.LightGray
-import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import com.selincengiz.composepractice.R
-
-
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
 @Composable
 fun EmptyScreen(error: LoadState.Error? = null) {
-
     var message by remember {
         mutableStateOf(parseErrorMessage(error = error))
     }
@@ -57,7 +53,7 @@ fun EmptyScreen(error: LoadState.Error? = null) {
     val alphaAnimation by animateFloatAsState(
         targetValue = if (startAnimation) 0.3f else 0f,
         animationSpec = tween(durationMillis = 1500),
-        label = ""
+        label = "",
     )
 
     LaunchedEffect(key1 = true) {
@@ -65,28 +61,33 @@ fun EmptyScreen(error: LoadState.Error? = null) {
     }
 
     EmptyContent(alphaAnim = alphaAnimation, message = message, iconId = icon)
-
 }
 
 @Composable
-fun EmptyContent(alphaAnim: Float, message: String, iconId: Int) {
+fun EmptyContent(
+    alphaAnim: Float,
+    message: String,
+    iconId: Int,
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Icon(
             painter = painterResource(id = iconId),
             contentDescription = null,
             tint = if (isSystemInDarkTheme()) LightGray else DarkGray,
-            modifier = Modifier
-                .size(120.dp)
-                .alpha(alphaAnim)
+            modifier =
+                Modifier
+                    .size(120.dp)
+                    .alpha(alphaAnim),
         )
         Text(
-            modifier = Modifier
-                .padding(10.dp)
-                .alpha(alphaAnim),
+            modifier =
+                Modifier
+                    .padding(10.dp)
+                    .alpha(alphaAnim),
             text = message,
             style = MaterialTheme.typography.bodyMedium,
             color = if (isSystemInDarkTheme()) LightGray else DarkGray,
@@ -94,9 +95,8 @@ fun EmptyContent(alphaAnim: Float, message: String, iconId: Int) {
     }
 }
 
-
-fun parseErrorMessage(error: LoadState.Error?): String {
-    return when (error?.error) {
+fun parseErrorMessage(error: LoadState.Error?): String =
+    when (error?.error) {
         is SocketTimeoutException -> {
             "Server Unavailable."
         }
@@ -109,7 +109,6 @@ fun parseErrorMessage(error: LoadState.Error?): String {
             "Unknown Error."
         }
     }
-}
 
 @Preview(showBackground = true)
 @Preview(uiMode = UI_MODE_NIGHT_YES)

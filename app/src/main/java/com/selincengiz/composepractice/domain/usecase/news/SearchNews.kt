@@ -6,9 +6,10 @@ import com.selincengiz.composepractice.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 
 class SearchNews(
-    private val newsRepository: NewsRepository
+    private val newsRepository: NewsRepository,
 ) {
-    operator fun invoke(searchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
-        return newsRepository.searchNews(searchQuery, sources)
-    }
+    operator fun invoke(
+        searchQuery: String,
+        sources: List<String>,
+    ): Flow<PagingData<Article>> = newsRepository.searchNews(searchQuery, sources)
 }

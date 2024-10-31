@@ -9,10 +9,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val newsUseCase: NewsUseCase
+    private val newsUseCase: NewsUseCase,
 ) : ViewModel() {
-
-    val news = newsUseCase.getNews(
-        sources = listOf("buzzfeed", "google-news", "ars-technica")
-    ).cachedIn(viewModelScope)
+    val news =
+        newsUseCase
+            .getNews(
+                sources = listOf("buzzfeed", "google-news", "ars-technica"),
+            ).cachedIn(viewModelScope)
 }

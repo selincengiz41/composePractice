@@ -8,14 +8,13 @@ import androidx.lifecycle.viewModelScope
 import com.selincengiz.composepractice.domain.model.Article
 import com.selincengiz.composepractice.domain.usecase.news.NewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val newsUseCase: NewsUseCase
+    private val newsUseCase: NewsUseCase,
 ) : ViewModel() {
-
     var sideEffect by mutableStateOf<String?>(null)
         private set
 

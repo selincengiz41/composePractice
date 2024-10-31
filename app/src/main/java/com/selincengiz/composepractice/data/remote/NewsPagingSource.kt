@@ -6,16 +6,15 @@ import com.selincengiz.composepractice.domain.model.Article
 
 class NewsPagingSource(
     private val newsApi: NewsApi,
-    private val sources: String
+    private val sources: String,
 ) : PagingSource<Int, Article>() {
     private var totalNewsCount = 0
 
-    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
-        return state.anchorPosition?.let { anchorPosition ->
+    override fun getRefreshKey(state: PagingState<Int, Article>): Int? =
+        state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
-    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
@@ -27,13 +26,12 @@ class NewsPagingSource(
             LoadResult.Page(
                 data = articles,
                 nextKey = if (totalNewsCount == newsResponse.totalResults) null else page + 1,
-                prevKey = null
+                prevKey = null,
             )
-
         } catch (e: Exception) {
             e.printStackTrace()
             LoadResult.Error(
-                throwable = e
+                throwable = e,
             )
         }
     }

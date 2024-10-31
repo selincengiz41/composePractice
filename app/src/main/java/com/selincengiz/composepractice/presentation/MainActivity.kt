@@ -21,6 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -37,11 +38,10 @@ class MainActivity : ComponentActivity() {
                 SideEffect {
                     systemController.setSystemBarsColor(
                         color = Color.Transparent,
-                        darkIcons = !isSystemInDarkMode
+                        darkIcons = !isSystemInDarkMode,
                     )
                 }
-                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background))
-                {
+                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
                     val startDesination = viewModel.startDestination
                     NavGraph(startDestination = startDesination)
                 }
@@ -49,5 +49,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-

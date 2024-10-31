@@ -3,7 +3,6 @@ package com.selincengiz.composepractice.util
 import com.selincengiz.composepractice.BuildConfig
 
 object Constants {
-
     const val USER_SETTINGS = "userSettings"
 
     const val APP_ENTRY = "appEntry"

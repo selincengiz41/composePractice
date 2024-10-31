@@ -38,55 +38,56 @@ import com.selincengiz.composepractice.presentation.Dimens.SmallIconSize
 fun ArticleCard(
     modifier: Modifier = Modifier,
     article: Article,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
-
     val context = LocalContext.current
     Row(modifier = modifier.clickable { onClick() }) {
         AsyncImage(
-            modifier = Modifier
-                .size(ArticleCardSize)
-                .clip(MaterialTheme.shapes.medium),
+            modifier =
+                Modifier
+                    .size(ArticleCardSize)
+                    .clip(MaterialTheme.shapes.medium),
             model = ImageRequest.Builder(context).data(article.urlToImage).build(),
             contentDescription = null,
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
 
         Column(
             verticalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier
-                .padding(horizontal = ExtraSmallPadding)
-                .height(ArticleCardSize)
+            modifier =
+                Modifier
+                    .padding(horizontal = ExtraSmallPadding)
+                    .height(ArticleCardSize),
         ) {
-
             Text(
                 text = article.title,
                 style = MaterialTheme.typography.bodyMedium,
-                color = colorResource(
-                    id = R.color.text_title
-                ),
+                color =
+                    colorResource(
+                        id = R.color.text_title,
+                    ),
                 maxLines = 2,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
             )
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = article.source.name,
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                    color = colorResource(id = R.color.text_title)
+                    color = colorResource(id = R.color.text_title),
                 )
                 Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                 Icon(
                     painter = painterResource(id = R.drawable.ic_time),
                     contentDescription = null,
                     modifier = Modifier.size(SmallIconSize),
-                    tint = colorResource(id = R.color.body)
+                    tint = colorResource(id = R.color.body),
                 )
                 Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                 Text(
                     text = article.publishedAt,
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                    color = colorResource(id = R.color.body)
+                    color = colorResource(id = R.color.body),
                 )
             }
         }
@@ -98,18 +99,17 @@ fun ArticleCard(
 @Composable
 private fun ArticleCardPreview() {
     ArticleCard(
-        article = Article(
-            author = "",
-            content = "",
-            description = "",
-            publishedAt = "2 hours",
-            source = Source(id = "", name = "BBC"),
-            title = "Her traint broke down. Her phone died.",
-            url = "",
-            urlToImage = ""
-        )
+        article =
+            Article(
+                author = "",
+                content = "",
+                description = "",
+                publishedAt = "2 hours",
+                source = Source(id = "", name = "BBC"),
+                title = "Her traint broke down. Her phone died.",
+                url = "",
+                urlToImage = "",
+            ),
     ) {
-
     }
-
 }

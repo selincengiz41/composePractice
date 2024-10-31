@@ -1,7 +1,6 @@
 package com.selincengiz.composepractice.presentation.details.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
@@ -25,64 +24,58 @@ fun DetailsTopBar(
     onBrowsingClick: () -> Unit,
     onShareClick: () -> Unit,
     onBookmarkClick: () -> Unit,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     TopAppBar(
         title = { },
         modifier = Modifier.fillMaxWidth(),
-        colors = TopAppBarDefaults.mediumTopAppBarColors(
-            containerColor = Color.Transparent,
-            actionIconContentColor = colorResource(id = R.color.body),
-            navigationIconContentColor = colorResource(id = R.color.body)
-        ),
+        colors =
+            TopAppBarDefaults.mediumTopAppBarColors(
+                containerColor = Color.Transparent,
+                actionIconContentColor = colorResource(id = R.color.body),
+                navigationIconContentColor = colorResource(id = R.color.body),
+            ),
         navigationIcon = {
             IconButton(onClick = onBackClick) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_back_arrow),
-                    contentDescription = null
+                    contentDescription = null,
                 )
-
             }
         },
         actions = {
             IconButton(onClick = onBookmarkClick) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_bookmark),
-                    contentDescription = null
+                    contentDescription = null,
                 )
-
             }
             IconButton(onClick = onShareClick) {
                 Icon(
                     imageVector = Icons.Default.Share,
-                    contentDescription = null
+                    contentDescription = null,
                 )
-
             }
             IconButton(onClick = onBrowsingClick) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_network),
-                    contentDescription = null
+                    contentDescription = null,
                 )
-
             }
-        }
+        },
     )
-
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(showBackground = true)
 @Composable
 private fun DetailsTopBarPreview() {
-ComposePracticeTheme {
-
-    DetailsTopBar(
-        onBrowsingClick = {  },
-        onShareClick = {  },
-        onBookmarkClick = { },
-        onBackClick = {})
-        
-
-}
+    ComposePracticeTheme {
+        DetailsTopBar(
+            onBrowsingClick = { },
+            onShareClick = { },
+            onBookmarkClick = { },
+            onBackClick = {},
+        )
+    }
 }

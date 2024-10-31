@@ -34,7 +34,7 @@ import com.selincengiz.composepractice.presentation.navgraph.Route
 fun HomeScreen(
     articles: LazyPagingItems<Article>,
     navigateToSearch: (String) -> Unit,
-    navigateToDetail: (Article) -> Unit
+    navigateToDetail: (Article) -> Unit,
 ) {
     val titles by remember {
         derivedStateOf {
@@ -46,23 +46,23 @@ fun HomeScreen(
                 ""
             }
         }
-
     }
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(top = MediumPadding1)
-            .statusBarsPadding()
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(top = MediumPadding1)
+                .statusBarsPadding(),
     ) {
-
         Image(
             painter = painterResource(id = R.drawable.ic_logo),
             contentDescription = null,
-            modifier = Modifier
-                .width(150.dp)
-                .height(30.dp)
-                .padding(horizontal = MediumPadding1)
+            modifier =
+                Modifier
+                    .width(150.dp)
+                    .height(30.dp)
+                    .padding(horizontal = MediumPadding1),
         )
 
         Spacer(modifier = Modifier.height(MediumPadding1))
@@ -73,19 +73,20 @@ fun HomeScreen(
             readOnly = true,
             onValueChange = {},
             onClick = { navigateToSearch(Route.SearchScreen.route) },
-            onSearch = {}
+            onSearch = {},
         )
 
         Spacer(modifier = Modifier.height(MediumPadding1))
 
         Text(
             text = titles,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = MediumPadding1)
-                .basicMarquee(),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = MediumPadding1)
+                    .basicMarquee(),
             fontSize = 12.sp,
-            color = colorResource(id = R.color.placeholder)
+            color = colorResource(id = R.color.placeholder),
         )
 
         Spacer(modifier = Modifier.height(MediumPadding1))
@@ -95,6 +96,7 @@ fun HomeScreen(
             articles = articles,
             onClick = {
                 navigateToDetail(it)
-            })
+            },
+        )
     }
 }

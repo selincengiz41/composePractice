@@ -54,7 +54,9 @@ fun OnBoardingScreen(event: (OnBoardingEvent) -> Unit) {
         }
 
         Spacer(modifier = Modifier.weight(1f))
-        Row(modifier = Modifier.fillMaxWidth(),
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = MediumPadding2)
+                .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {

@@ -1,0 +1,36 @@
+# .editorconfig - Kod biçimlendirme kurallarını tanımlar
+
+# Genel ayarlar - Tüm dosya türleri için geçerli
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 100
+
+# Kotlin dosyaları için özel kurallar
+[*.{kt,kts}]
+ktlint_code_style = ktlint_official
+ktlint_standard = enabled # Disable all rules from the `standard` rule set provided by KtLint
+ktlint_experimental = enabled # Enable all `experimental` rules from all rule sets provided by KtLint or other rule providers
+# Kullanılmayan importları sil
+ij_kotlin_imports_layout = *,^java,^javax,^kotlin,^android
+ij_kotlin_allow_trailing_comma_on_call_site = true
+ij_kotlin_allow_trailing_comma_on_declaration_site = true
+ktlint_standard_blank-line-between-when-conditions = disabled
+ktlint_standard_annotation = disabled
+
+
+# XML dosyaları için özel ayarlar (Android projeleri için)
+[*.xml]
+indent_style = space
+indent_size = 2
+
+# Markdown dosyaları için ayarlar
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off

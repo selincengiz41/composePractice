@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.ktlint)
 }
 
 
@@ -57,6 +58,11 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    ktlint {
+        version = "1.4.0" // Ktlint versiyonunu belirle
+        android = true // Android projeleri için
+        outputColorName = "RED" // Çıktı rengini ayarla
     }
 }
 

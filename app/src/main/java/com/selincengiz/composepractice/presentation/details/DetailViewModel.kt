@@ -20,7 +20,7 @@ class DetailViewModel @Inject constructor(
 
     fun onEvent(event: DetailsEvent) {
         when (event) {
-            is DetailsEvent.UpsertDeleteArticle ->
+            is DetailsEvent.UpsertDeleteArticle -> {
                 viewModelScope.launch {
                     val article = newsUseCase.selectArticle(event.article.url)
                     if (article == null) {
@@ -29,9 +29,11 @@ class DetailViewModel @Inject constructor(
                         deleteArticle(event.article)
                     }
                 }
-            is DetailsEvent.RemoveSideEffect ->
-                sideEffect = null
+            }
 
+            is DetailsEvent.RemoveSideEffect -> {
+                sideEffect = null
+            }
         }
     }
 

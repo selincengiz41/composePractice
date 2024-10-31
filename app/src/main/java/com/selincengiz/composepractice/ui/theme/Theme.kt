@@ -49,6 +49,7 @@ fun ComposePracticeTheme(
             darkTheme -> {
                 DarkColorScheme
             }
+
             else -> {
                 LightColorScheme
             }

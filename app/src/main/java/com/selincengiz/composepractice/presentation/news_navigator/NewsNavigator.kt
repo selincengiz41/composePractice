@@ -87,6 +87,22 @@ fun NewsNavigator() {
                                 route = Route.SearchScreen.route
                             )
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             2 -> navigateToTap(
                                 navController = navController,
                                 route = Route.BookmarkScreen.route

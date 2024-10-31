@@ -9,6 +9,7 @@ foundation = "1.4.3"
 hiltAndroid = "2.51"
 hiltNavigationCompose = "1.2.0"
 kotlin = "1.9.0"
+ktlintCore = "0.46.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -24,6 +25,7 @@ retrofit = "2.9.0"
 roomCompiler = "2.6.1"
 roomRuntime = "2.6.1"
 ktlint = "12.1.1"
+jetbrainsKotlinJvm = "1.9.0"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
@@ -57,6 +59,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+ktlint-core = { module = "com.pinterest.ktlint:ktlint-core", version.ref = "ktlintCore" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -65,3 +68,4 @@ hiltAndroid={ id="com.google.dagger.hilt.android", version.ref="hiltAndroid"}
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlin"}
 ktlint = { id = "org.jlleitschuh.gradle.ktlint",  version.ref = "ktlint"}
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }

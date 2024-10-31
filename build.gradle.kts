@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.kapt) apply false
     alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.jetbrains.kotlin.jvm) apply false
 }

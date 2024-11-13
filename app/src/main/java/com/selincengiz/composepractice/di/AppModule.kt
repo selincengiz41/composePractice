@@ -40,6 +40,13 @@ object AppModule {
         @ApplicationContext context: Context,
     ): LocalUserManager = LocalUserManagerImpl(context)
 
+
+
+
+
+
+
+
     @Provides
     @Singleton
     fun provideApiInstance(): NewsApi =

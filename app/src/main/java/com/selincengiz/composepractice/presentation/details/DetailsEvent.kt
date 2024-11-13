@@ -8,4 +8,6 @@ sealed class DetailsEvent {
     ) : DetailsEvent()
 
     data object RemoveSideEffect : DetailsEvent()
+
+    data object rer : DetailsEvent()
 }

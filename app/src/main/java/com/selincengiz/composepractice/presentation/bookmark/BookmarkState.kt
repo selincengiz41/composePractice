@@ -5,9 +5,4 @@ import com.selincengiz.composepractice.domain.model.Article
 data class BookmarkState(
     val articles: List<Article> = emptyList(),
     val sfasf: List<Article> = emptyList(),
-
-
-
-
-
 )

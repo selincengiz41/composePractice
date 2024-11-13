@@ -22,6 +22,11 @@ val pages =
             image = R.drawable.onboarding1,
         ),
         Page(
+            title = "Dünya Parmaklarınızın Ucunda",
+            description = "En güncel haberler, ayrıntılı analizler ve özel içeriklerle dünyanın dört bir yanından en önemli gelişmeleri takip edin.",
+            image = R.drawable.onboarding1,
+        ),
+        Page(
             title = "Gelişmiş Arama ile Kolay Erişim",
             description = "Arama özelliğimiz sayesinde istediğiniz haber başlıklarına ve detaylara anında ulaşın.",
             image = R.drawable.onboarding2,

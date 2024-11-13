@@ -9,7 +9,9 @@ sealed class DetailsEvent {
 
 
 
+
     data object RemoveSideEffect : DetailsEvent()
+
 
 
 }

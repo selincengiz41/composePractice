@@ -7,5 +7,10 @@ sealed class DetailsEvent {
         val article: Article,
     ) : DetailsEvent()
 
+
+
     data object RemoveSideEffect : DetailsEvent()
+
+
+
 }

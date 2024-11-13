@@ -27,7 +27,6 @@ fun ArticlesList(
 
 
 
-
     if (articles.isEmpty()) {
         EmptyScreen()
     }
@@ -63,6 +62,14 @@ fun ArticlesList(
         }
     }
 }
+
+
+
+
+
+
+
+
 
 @Composable
 fun handlePagingResult(articles: LazyPagingItems<Article>): Boolean {

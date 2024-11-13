@@ -15,6 +15,9 @@ sealed class DetailsEvent {
 
     data object fefe : DetailsEvent()
 
+
+
+
     data object sfd : DetailsEvent()
 
     data object fsdf : DetailsEvent()

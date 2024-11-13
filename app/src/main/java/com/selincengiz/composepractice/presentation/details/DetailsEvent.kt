@@ -14,4 +14,6 @@ sealed class DetailsEvent {
     data object rer : DetailsEvent()
 
     data object fefe : DetailsEvent()
+
+    data object sfd : DetailsEvent()
 }

@@ -18,15 +18,6 @@ class DetailViewModel @Inject constructor(
     var sideEffect by mutableStateOf<String?>(null)
         private set
 
-
-
-
-
-
-
-
-
-
     fun onEvent(event: DetailsEvent) {
         when (event) {
             is DetailsEvent.UpsertDeleteArticle -> {
@@ -46,19 +37,14 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-
-
-
-
-
-
-
-
-
     private suspend fun deleteArticle(article: Article) {
         newsUseCase.deleteArticle(article)
         sideEffect = "Article Deleted"
     }
+
+
+
+
 
     private suspend fun upsertArticle(article: Article) {
         newsUseCase.upsertArticle(article)

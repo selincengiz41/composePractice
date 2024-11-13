@@ -45,4 +45,9 @@ val pages =
             description = "Bookmark özelliğimizle ilginizi çeken haberleri kaydedin. Dilediğiniz zaman geri dönüp okuyabileceğiniz bir haber arşivi oluşturun.",
             image = R.drawable.onboarding3,
         ),
+        Page(
+            title = "Haberleri Kaydedin, Daha Sonra Okuyun",
+            description = "Bookmark özelliğimizle ilginizi çeken haberleri kaydedin. Dilediğiniz zaman geri dönüp okuyabileceğiniz bir haber arşivi oluşturun.",
+            image = R.drawable.onboarding3,
+        ),
     )

@@ -38,19 +38,11 @@ fun DetailScreen(
 ) {
     val context = LocalContext.current
 
-
-
-
-
-
-
-
-
     Column(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .statusBarsPadding(),
+            Modifier
+                .fillMaxSize()
+                .statusBarsPadding(),
     ) {
         DetailsTopBar(
             onBrowsingClick = {
@@ -90,10 +82,10 @@ fun DetailScreen(
                     model = ImageRequest.Builder(context).data(article.urlToImage).build(),
                     contentDescription = null,
                     modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .height(ArticleImageHeight)
-                        .clip(MaterialTheme.shapes.medium),
+                        Modifier
+                            .fillMaxWidth()
+                            .height(ArticleImageHeight)
+                            .clip(MaterialTheme.shapes.medium),
                     contentScale = ContentScale.Crop,
                 )
 
